@@ -7,12 +7,17 @@
 
 import UIKit
 
-class SecondConctactListController: UITableViewController {
+final class SecondConctactListController: UITableViewController {
     
-    private var contactList = Person.getPersonsList()
+    private var dataStore = DataStore()
+    private var contactList = [Person]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        for _ in 0..<10 {
+            let person = dataStore.generateRandomPerson()
+            contactList.append(person)
+        }
     }
 }
 

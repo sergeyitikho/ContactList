@@ -7,12 +7,16 @@
 
 import UIKit
 
-class ContactListViewController: UITableViewController {
-    private var contactList = Person.getPersonsList()
-
+final class ContactListViewController: UITableViewController {
+    private var dataStore = DataStore()
+    private var contactList = [Person]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        for _ in 0..<10 {
+            let person = dataStore.generateRandomPerson()
+            contactList.append(person)
+        }
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "contactDetails" {
